@@ -45,9 +45,10 @@ module "eks" {
       # This value is ignored after the initial creation
       # https://github.com/bryantbiggs/eks-desired-size-hack
       desired_size = 1
+    }
   }
 
   tags = {
-    "Environment": "dev"
+    "Environment" : "dev"
   }
 }
