@@ -49,6 +49,6 @@ module "eks" {
   }
 
   tags = {
-    "Environment" : "dev"
+    "Environment" = "dev"
   }
 }
