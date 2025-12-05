@@ -5,10 +5,17 @@ data "aws_vpc" "this" {
   }
 }
 
-data "aws_subnet" "this" {
+data "aws_subnet" "use1a" {
   filter {
     name   = "tag:Name"
     values = ["main-private-us-east-1a"]
+  }
+}
+
+data "aws_subnet" "use1b" {
+  filter {
+    name   = "tag:Name"
+    values = ["main-private-us-east-1b"]
   }
 }
 
@@ -32,7 +39,7 @@ module "eks" {
   }
 
   vpc_id     = data.aws_vpc.this.id
-  subnet_ids = [data.aws_subnet.this.id]
+  subnet_ids = [data.aws_subnet.use1a.id, data.aws_subnet.use1b.id]
 
   eks_managed_node_groups = {
     worker = {
