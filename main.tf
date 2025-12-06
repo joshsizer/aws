@@ -60,6 +60,22 @@ module "eks" {
     }
   }
 
+  access_entries = {
+    # One access entry with a policy associated
+    AdministratorAccess = {
+      principal_arn = "arn:aws:iam::457253393941:role/AWSReservedSSO_AdministratorAccess_ff31aa0dd1ebddaa"
+
+      policy_associations = {
+        admin = {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = {
+            type = "cluster"
+          }
+        }
+      }
+    }
+  }
+
   tags = {
     "Environment" = "dev"
   }
