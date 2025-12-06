@@ -63,7 +63,7 @@ module "eks" {
   access_entries = {
     # One access entry with a policy associated
     AdministratorAccess = {
-      principal_arn = "arn:aws:iam::457253393941:role/AWSReservedSSO_AdministratorAccess_ff31aa0dd1ebddaa"
+      principal_arn = "arn:aws:iam::457253393941:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AdministratorAccess_ff31aa0dd1ebddaa"
 
       policy_associations = {
         admin = {
