@@ -13,7 +13,7 @@ provider "flux" {
     cluster_ca_certificate = base64decode(data.aws_eks_cluster.upstream.certificate_authority[0].data)
   }
   git = {
-    url          = "ssh://git@github.com:joshsizer/aws.git"
+    url          = "ssh://git@github.com/joshsizer/aws.git"
     author_email = var.author_email
     author_name  = "Josh Sizer"
     branch       = "flux"
