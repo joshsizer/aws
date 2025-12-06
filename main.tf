@@ -29,6 +29,7 @@ module "eks" {
   create_cloudwatch_log_group = false
   enabled_log_types           = null
   endpoint_public_access      = true
+  enable_irsa                 = false
 
   # EKS Addons
   addons = {
