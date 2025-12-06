@@ -26,6 +26,10 @@ module "eks" {
   name               = "main"
   kubernetes_version = "1.33"
 
+  create_cloudwatch_log_group = false
+  enabled_log_types           = null
+  endpoint_public_access      = true
+
   # EKS Addons
   addons = {
     coredns = {}
