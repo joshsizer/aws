@@ -31,6 +31,8 @@ module "eks" {
   endpoint_public_access      = true
   enable_irsa                 = false
 
+  enable_cluster_creator_admin_permissions = true
+
   # EKS Addons
   addons = {
     coredns = {}
