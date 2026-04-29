@@ -3,6 +3,8 @@ module "iam_role" {
 
   name = "TestRole"
 
+  permissions_boundary = "arn:aws:iam::457253393941:policy/AppRuntimeBoundary"
+
   trust_policy_permissions = {
     TrustRoleAndServiceToAssume = {
       actions = [
