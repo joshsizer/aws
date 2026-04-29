@@ -1,7 +1,7 @@
 module "iam_role" {
   source = "terraform-aws-modules/iam/aws//modules/iam-role"
 
-  name = "TestRole!"
+  name = "TestRole"
 
   trust_policy_permissions = {
     TrustRoleAndServiceToAssume = {
