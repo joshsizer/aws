@@ -10,7 +10,8 @@ module "iam_policy" {
       "Statement": [
         {
           "Action": [
-            "ec2:Describe*"
+            "ec2:Describe*",
+            "ec2:Get*"
           ],
           "Effect": "Allow",
           "Resource": "*"
