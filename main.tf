@@ -22,7 +22,7 @@ module "iam_role" {
   policies = {}
 
   tags = {
-    "managed-by" = "terraform"
-    Environment  = "dev"
+
+    Environment = "dev"
   }
 }
