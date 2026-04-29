@@ -1,17 +1,26 @@
-module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
+module "iam_role" {
+  source = "terraform-aws-modules/iam/aws//modules/iam-role"
 
-  name = "main"
-  cidr = "10.0.0.0/16"
+  name = "TestRole!"
 
-  azs             = ["us-east-1a", "us-east-1b"]
-  private_subnets = ["10.0.0.0/19", "10.0.32.0/19"]
-  public_subnets  = ["10.0.128.0/19", "10.0.160.0/19"]
+  trust_policy_permissions = {
+    TrustRoleAndServiceToAssume = {
+      actions = [
+        "sts:AssumeRole",
+      ]
+      principals = [{
+        type = "AWS"
+        identifiers = [
+          "arn:aws:iam::457253393941:root",
+        ]
+      }]
+    }
+  }
 
-  enable_nat_gateway = true
-  single_nat_gateway = true
+  policies = {}
 
   tags = {
+    Terraform   = "true"
     Environment = "dev"
   }
 }
