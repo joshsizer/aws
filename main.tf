@@ -20,7 +20,8 @@ module "iam_policy" {
   EOF
 
   tags = {
-    Environment = "test"
+    "managed-by" = "terraform"
+    Environment  = "test"
   }
 }
 
