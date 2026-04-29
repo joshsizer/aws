@@ -1,3 +1,29 @@
+module "iam_policy" {
+  source = "terraform-aws-modules/iam/aws//modules/iam-policy"
+
+  name_prefix = "TestPolicy-"
+  description = "My example policy"
+
+  policy = <<-EOF
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Action": [
+            "ec2:Describe*"
+          ],
+          "Effect": "Allow",
+          "Resource": "*"
+        }
+      ]
+    }
+  EOF
+
+  tags = {
+    Environment = "test"
+  }
+}
+
 module "iam_role" {
   source = "terraform-aws-modules/iam/aws//modules/iam-role"
 
@@ -19,7 +45,9 @@ module "iam_role" {
     }
   }
 
-  policies = {}
+  policies = {
+    ExamplePolicy = module.iam_policy.arn
+  }
 
   tags = {
     "managed-by" = "terraform"
